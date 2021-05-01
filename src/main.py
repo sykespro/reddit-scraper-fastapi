@@ -3,7 +3,7 @@ import fastapi.responses as _responses
 
 app = _fastapi.FastAPI()
 
-import services as _services
+import src.services as _services
 
 @app.get("/")
 def root():
