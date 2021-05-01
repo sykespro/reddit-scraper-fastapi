@@ -1,18 +1,25 @@
 import fastapi as _fastapi
 import fastapi.responses as _responses
 
-app = _fastapi.FastAPI()
+app = _fastapi.FastAPI(
+    title="Reddit + Scraper + FastAPI",
+    description="The purpose of this project is to test FastAPI and Scraping Reddit.",
+    version="0.0.1"
+)
 
 import services as _services
+
 
 @app.get("/")
 def root():
     return {"message": "welcome to the amazing meme api"}
 
+
 @app.get("/general-memes")
 def get_general_memes():
     image_path = _services.select_random_image("memes")
     return _responses.FileResponse(image_path)
+
 
 @app.post("/general-memes")
 def create_general_meme(image: _fastapi.UploadFile = _fastapi.File(...)):

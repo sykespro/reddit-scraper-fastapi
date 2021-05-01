@@ -7,6 +7,7 @@ import shutil as _shutil
 
 _dotenv.load_dotenv()
 
+
 def _create_reddit_client():
     client = _praw.Reddit(
         client_id=_os.environ["CLIENT_ID"],
@@ -78,4 +79,3 @@ def _collect_memes(subreddit_name: str, limit: int = 20):
 
 if __name__ == "__main__":
     _collect_memes("memes")
-    
